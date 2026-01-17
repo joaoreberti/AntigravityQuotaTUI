@@ -4,6 +4,12 @@ A standalone terminal-based dashboard (TUI) that monitors your Antigravity AI mo
 
 <img src="assets/TUI.png" alt="AGQ TUI" width="600"/>
 
+## ⚠️ Important Requirement
+
+**Antigravity IDE must be running.**
+
+This tool works by connecting to the internal language server managed by the Antigravity IDE. It "borrows" the active session and security tokens to provide you with live data. If the IDE is closed, the language server process terminates, and this tool will wait until it is reopened.
+
 ## Features
 
 ### 📊 Real-Time TUI Dashboard
@@ -52,7 +58,7 @@ node export/index.js
 - `-h, --help`: Display help.
 
 ### Controls
-- `r`: Force a manual refresh.
+- `r`: Force a manual refresh or attempt to reconnect.
 - `q`: Quit the application.
 
 ## Configuration
@@ -67,9 +73,9 @@ You can also configure the application using environment variables:
 
 ## How It Works
 
-1. **Process Detection** – Scans your system for the Antigravity language server process and extracts the required connection parameters (ports, CSRF tokens).
-2. **Port Discovery** – Tests local listening ports to find the active gRPC/JSON endpoint.
-3. **Quota Fetching** – Communicates with the internal language server to retrieve model quotas and plan status.
+1. **Process Detection** – Scans your system for the active Antigravity language server process.
+2. **Session Borrowing** – Extracts the required connection parameters (ports, CSRF tokens) from the running process arguments.
+3. **Local Communication** – Communicates directly with the local language server to retrieve model quotas and plan status.
 4. **TUI Rendering** – Uses React/Ink to render a clean, interactive dashboard in your terminal.
 
 ## Development

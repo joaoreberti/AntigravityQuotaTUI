@@ -1,62 +1,44 @@
---- AGQ Session Started at 2026-01-17T10:09:03.725Z ---
-2026-01-17T10:09:03.725Z DEBUG [AGQ][ProcessFinder] ============================================================
-2026-01-17T10:09:03.725Z DEBUG [AGQ][ProcessFinder] Starting process detection (max_retries: 5)
-2026-01-17T10:09:03.725Z DEBUG [AGQ][ProcessFinder] ============================================================
-2026-01-17T10:09:03.725Z DEBUG [AGQ][PERF] Timer started: detect_process_info
-2026-01-17T10:09:03.725Z DEBUG [AGQ][ProcessFinder] Attempt 1/5
-2026-01-17T10:09:03.725Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+--- AGQ Session Started at 2026-01-17T10:19:37.580Z ---
+2026-01-17T10:19:37.581Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:19:37.581Z DEBUG [AGQ][ProcessFinder] Starting process detection (max_retries: 5)
+2026-01-17T10:19:37.581Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:19:37.581Z DEBUG [AGQ][PERF] Timer started: detect_process_info
+2026-01-17T10:19:37.581Z DEBUG [AGQ][ProcessFinder] Attempt 1/5
+2026-01-17T10:19:37.581Z DEBUG [AGQ][ProcessFinder] Executing process list command:
 pgrep -fl language_server_macos_arm
-2026-01-17T10:09:03.728Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
-2026-01-17T10:09:03.728Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
-2026-01-17T10:09:03.767Z ERROR [AGQ][ProcessFinder] Attempt 1 failed with error: {
-  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
-  "code": 1,
-  "killed": false,
-  "signal": null
+2026-01-17T10:19:37.583Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
+2026-01-17T10:19:37.583Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
+2026-01-17T10:19:37.626Z DEBUG [AGQ][ProcessFinder] Raw stdout (1375 chars):
+49973 /Applications/Antigravity.app/Contents/Resources/app/extensions/antigravity/bin/language_server_macos_arm --enable_lsp --extension_server_port 58705 --csrf_token 47d59bb8-b6ca-4596-9e4a-b2bd212efa29 --random_port --workspace_id file_Users_joao_code_pocketing --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /var/folders/b6/b7k3q8054z73gf7r85w6fjqc0000gn/T/server_536b5dd26349cd88
+49992 /Applications/Antigravity.app/Contents/Resources/app/extensions/antigravity/bin/language_server_macos_arm --enable_lsp --extension_server_port 58709 --csrf_token f719b59b-7535-4168-b786-9e579a3905a6 --random_port --workspace_id file_Users_joao_ai_ai_assistant_personal_assistant_mcp --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /var/folders/b6/b7k3q8054z73gf7r85w6fjqc0000gn/T/server_07fde1fedb15efa8
+50161 /Applications/Antigravity.app/Contents/Resources/app/extensions/antigravity/bin/language_server_macos_arm --enable_lsp --extension_server_port 58723 --csrf_token f0168eb6-10f8-4f9d-8ce4-207aa342f75e --random_port --workspace_id file_Users_joao_code_the_wishing_list --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /var/folders/b6/b7k3q8054z73gf7r85w6fjqc0000gn/T/server_44cb9ff65c527dcc
+
+2026-01-17T10:19:37.627Z INFO  [AGQ][ProcessFinder] Process info parsed successfully: {
+  "pid": 49973,
+  "extension_port": 58705,
+  "csrf_token": "47d59bb8..."
 }
-2026-01-17T10:09:03.767Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
-2026-01-17T10:09:03.869Z DEBUG [AGQ][ProcessFinder] Attempt 2/5
-2026-01-17T10:09:03.869Z DEBUG [AGQ][ProcessFinder] Executing process list command:
-pgrep -fl language_server_macos_arm
-2026-01-17T10:09:03.917Z ERROR [AGQ][ProcessFinder] Attempt 2 failed with error: {
-  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
-  "code": 1,
-  "killed": false,
-  "signal": null
-}
-2026-01-17T10:09:03.917Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
-2026-01-17T10:09:04.019Z DEBUG [AGQ][ProcessFinder] Attempt 3/5
-2026-01-17T10:09:04.019Z DEBUG [AGQ][ProcessFinder] Executing process list command:
-pgrep -fl language_server_macos_arm
-2026-01-17T10:09:04.067Z ERROR [AGQ][ProcessFinder] Attempt 3 failed with error: {
-  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
-  "code": 1,
-  "killed": false,
-  "signal": null
-}
-2026-01-17T10:09:04.068Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
-2026-01-17T10:09:04.169Z DEBUG [AGQ][ProcessFinder] Attempt 4/5
-2026-01-17T10:09:04.169Z DEBUG [AGQ][ProcessFinder] Executing process list command:
-pgrep -fl language_server_macos_arm
-2026-01-17T10:09:04.223Z ERROR [AGQ][ProcessFinder] Attempt 4 failed with error: {
-  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
-  "code": 1,
-  "killed": false,
-  "signal": null
-}
-2026-01-17T10:09:04.223Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
-2026-01-17T10:09:04.325Z DEBUG [AGQ][ProcessFinder] Attempt 5/5
-2026-01-17T10:09:04.325Z DEBUG [AGQ][ProcessFinder] Executing process list command:
-pgrep -fl language_server_macos_arm
-2026-01-17T10:09:04.379Z ERROR [AGQ][ProcessFinder] Attempt 5 failed with error: {
-  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
-  "code": 1,
-  "killed": false,
-  "signal": null
-}
-2026-01-17T10:09:04.380Z ERROR [AGQ][ProcessFinder] Process detection failed after 5 attempt(s)
-2026-01-17T10:09:04.380Z DEBUG [AGQ][PERF] Timer ended: detect_process_info (655ms)
-2026-01-17T10:09:04.380Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
-2026-01-17T10:09:04.380Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
-2026-01-17T10:09:04.384Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
-2026-01-17T10:09:04.384Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
+2026-01-17T10:19:37.627Z DEBUG [AGQ][ProcessFinder] Getting listening ports for PID: 49973
+2026-01-17T10:19:37.627Z DEBUG [AGQ][ProcessFinder] Port list command:
+lsof -nP -a -iTCP -sTCP:LISTEN -p 49973
+2026-01-17T10:19:37.654Z DEBUG [AGQ][ProcessFinder] Port list stdout (344 chars):
+COMMAND     PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+language_ 49973 joao   23u  IPv4 0xe6ed56adc2c85102      0t0  TCP 127.0.0.1:58716 (LISTEN)
+language_ 49973 joao   24u  IPv4  0x1ff6bdcfd6a2bf8      0t0  TCP 127.0.0.1:58718 (LISTEN)
+language_ 49973 joao   41u  IPv4 0xbebd8c2ff1dfbd56      0t0  TCP 127.0.0.1:58735 (LISTEN)
+
+2026-01-17T10:19:37.655Z DEBUG [AGQ][ProcessFinder] Parsed ports: [58716, 58718, 58735]
+2026-01-17T10:19:37.655Z DEBUG [AGQ][ProcessFinder] Found 3 listening port(s): [58716, 58718, 58735]
+2026-01-17T10:19:37.655Z DEBUG [AGQ][ProcessFinder] Testing ports to find working endpoint...
+2026-01-17T10:19:37.655Z DEBUG [AGQ][ProcessFinder] Testing port 58716...
+2026-01-17T10:19:37.655Z DEBUG [AGQ][ProcessFinder] HTTP request to https://127.0.0.1:58716/exa.language_server_pb.LanguageServerService/GetUnleashData
+2026-01-17T10:19:37.676Z DEBUG [AGQ][ProcessFinder] Response from port 58716: status=200
+2026-01-17T10:19:37.676Z INFO  [AGQ][ProcessFinder] Port 58716 is working
+2026-01-17T10:19:37.676Z INFO  [AGQ][ProcessFinder] SUCCESS: Valid port found: 58716
+2026-01-17T10:19:37.676Z DEBUG [AGQ][PERF] Timer ended: detect_process_info (95ms)
+2026-01-17T10:19:37.677Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
+2026-01-17T10:19:37.677Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
+2026-01-17T10:19:37.707Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
+2026-01-17T10:19:37.707Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
+2026-01-17T10:19:37.714Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
+2026-01-17T10:19:37.714Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm

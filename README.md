@@ -1,117 +1,93 @@
-# Antigravity Quota Watcher
+# Antigravity Quota (AGQ) - TUI
 
-A lightweight VS Code extension that monitors your Antigravity AI model usage quota and displays it in the status bar.
+A standalone terminal-based dashboard (TUI) that monitors your Antigravity AI model usage quota in real-time.
 
-<img src="assets/modal.png" alt="drawing" width="500"/>
-<img src="assets/taskbar.png" alt="drawing" width="500"/>
-
-## Installation (Github)
-
-1. Download the latest `.vsix` from the [Releases](https://github.com/Henrik-3/AntigravityQuota/releases/latest)
-2. In VS Code: `Extensions` → `...` → `Install from VSIX...`
-3. Restart VS Code / Antigravity
-
-## Installation (Open VSX/Antigravity)
-
-1. Open Antigravity
-2. Open the Extensions view (`Ctrl+Shift+X`)
-3. Search for "Antigravity Quota (AGQ)"
-4. Click `Install`
+<img src="assets/TUI.png" alt="AGQ TUI" width="600"/>
 
 ## Features
 
-### Real-Time Quota Monitoring
+### 📊 Real-Time TUI Dashboard
+- **Live Monitoring** – Beautiful terminal interface built with Ink (React for CLI).
+- **Visual Progress Bars** – Color-coded indicators (Green/Yellow/Red) for remaining quotas.
+- **Model Tracking** – See usage details and time until reset for all models (Claude, GPT, Gemini, etc.).
+- **Prompt Credits** – Track your available monthly prompt credits at a glance.
 
-- **Automatic detection** – Finds Antigravity's language server process, port, and auth token without manual setup
-- **Background polling** – Periodically fetches quota data to keep the status bar up-to-date
-- **Multi-model support** – Tracks quota usage for all available AI models (Gemini, Claude, GPT, etc.)
+### 🔍 Zero Configuration
+- **Automatic Process Detection** – Finds Antigravity's language server, port, and auth token automatically.
+- **Background Polling** – Keeps your data fresh without manual intervention.
 
-### Status Bar Integration
+### 💻 Cross-Platform Support
+- **Windows** – Support using PowerShell/CIM for process detection.
+- **macOS** – Unix-based detection strategy.
+- **Linux** – Unix-based detection strategy.
 
-- Displays quota info directly in the VS Code status bar
-- Visual indicators:
-    - `$(check)` – Quota healthy (>20%)
-    - `$(warning)` – Quota low (<20%)
-    - `$(error)` – Quota exhausted
-- Click to open the interactive quota menu
-
-### Pinned Models
-
-- Pin your favorite models to the status bar for quick visibility
-- Toggle pinning from the interactive menu
-- When no models are pinned, displays "AGQ" as default
-
-### Interactive Quota Menu
-
-- View all models with progress bars and percentages
-- See time until quota reset for each model
-- View prompt credits (available/monthly)
-- Toggle model visibility directly from the menu
-
-### Cross-Platform Support
-
-- **Windows** – Full support using `wmic` for process detection
-- **macOS** – Unix-based detection strategy
-- **Linux** – Unix-based detection strategy
-
-## Commands
-
-| Command            | Description                 |
-| ------------------ | --------------------------- |
-| `AGQ: Refresh Now` | Manually refresh quota data |
-
-## Configuration
-
-Configure via VS Code Settings (`Ctrl+,`) under **AGQ**:
-
-| Setting               | Default | Description                                 |
-| --------------------- | ------- | ------------------------------------------- |
-| `agq.enabled`         | `true`  | Enable/disable quota monitoring             |
-| `agq.pollingInterval` | `120`   | Polling interval in seconds (min: 30s)      |
-| `agq.pinnedModels`    | `[]`    | Array of model IDs to display in status bar |
-
-## Building from Source
+## Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/Henrik-3/AntigravityQuota.git
+cd AntigravityQuota
+
 # Install dependencies
 npm install
 
-# Compile TypeScript
-npm run compile
-
-# Package VSIX
-npm run node:vsix:package
+# Build the project
+npm run build
 ```
 
-For Bun users:
+## Usage
 
+Start the dashboard:
 ```bash
-bun run bun:vsix:package
+npm start
 ```
+
+Or run directly from the export:
+```bash
+node export/index.js
+```
+
+### CLI Options
+- `-i, --interval <number>`: Set the polling interval in seconds (default: 120).
+- `-h, --help`: Display help.
+
+### Controls
+- `r`: Force a manual refresh.
+- `q`: Quit the application.
+
+## Configuration
+
+You can also configure the application using environment variables:
+
+| Variable | Default | Description |
+| -------- | ------- | ----------- |
+| `AGQ_POLLING_INTERVAL` | `120` | Polling interval in seconds |
+| `AGQ_ENABLED` | `true` | Set to `false` to disable monitoring |
+| `AGQ_SHOW_CREDITS` | `false` | Set to `true` to show prompt credits by default |
+
+## How It Works
+
+1. **Process Detection** – Scans your system for the Antigravity language server process and extracts the required connection parameters (ports, CSRF tokens).
+2. **Port Discovery** – Tests local listening ports to find the active gRPC/JSON endpoint.
+3. **Quota Fetching** – Communicates with the internal language server to retrieve model quotas and plan status.
+4. **TUI Rendering** – Uses React/Ink to render a clean, interactive dashboard in your terminal.
 
 ## Development
 
 ```bash
-# Watch mode for development
-npm run watch
+# Watch mode (automatically rebuilds on change)
+npm run dev
 
 # Lint
 npm run lint
 ```
 
-## How It Works
-
-1. **Process Detection** – Scans for Antigravity's language server process and extracts connection parameters
-2. **Port Discovery** – Tests listening ports to find the correct API endpoint
-3. **Quota Fetching** – Calls `GetUserStatus` API to retrieve model quotas and prompt credits
-4. **UI Updates** – Parses the response and updates the status bar with formatted quota info
-
 ## Disclaimer
 
-This extension was created by me and Gemini 3 Pro between some Rainbow Six Siege Games, therefore please do not expect the highest code quality in this repo (yet).
-Some parts of the code (and especially the knowledge of how this process works) are based on the [Antigravity Quota Watcher](https://github.com/wusimpl/AntigravityQuotaWatcher) project. Feel free to check it out and leave a star on their repo if you find this useful.
+This project was built to provide a standalone alternative to the VS Code extension. 
+Some parts of the detection logic are inspired by the [Antigravity Quota Watcher](https://github.com/wusimpl/AntigravityQuotaWatcher) project.
 
-This project isn't endorsed by Google and doesn't reflect the views or opinions of Google or anyone officially involved in producing or managing Google/AntiGravity properties
+This project is not endorsed by Google and doesn't reflect the views or opinions of Google or anyone officially involved in producing or managing Google/AntiGravity properties.
 
 ## License
 

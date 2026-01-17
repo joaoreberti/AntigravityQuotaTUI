@@ -27,31 +27,40 @@ This tool works by connecting to the internal language server managed by the Ant
 - **macOS** – Unix-based detection strategy.
 - **Linux** – Unix-based detection strategy.
 
-## Installation
+## Installation & Setup
+
+### Option 1: Development / Instant Run (Recommended)
+This method allows you to run the tool without building it every time.
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Henrik-3/AntigravityQuota.git
+   cd AntigravityQuota
+   npm install
+   ```
+
+2. Create an alias in your shell configuration (e.g., `.zshrc` or `.bashrc`) to run it from anywhere:
+   ```bash
+   # Add this line to your config file
+   alias agq="npx --prefix /path/to/AntigravityQuota start"
+   ```
+   *Replace `/path/to/AntigravityQuota` with the actual path to where you cloned the repo.*
+
+3. Reload your shell and run:
+   ```bash
+   agq
+   ```
+
+### Option 2: Build & Run
+If you prefer a compiled version:
 
 ```bash
-# Clone the repository
-git clone https://github.com/Henrik-3/AntigravityQuota.git
-cd AntigravityQuota
-
-# Install dependencies
 npm install
-
-# Build the project
 npm run build
-```
-
-## Usage
-
-Start the dashboard:
-```bash
 npm start
 ```
 
-Or run directly from the export:
-```bash
-node export/index.js
-```
+## Usage
 
 ### CLI Options
 - `-i, --interval <number>`: Set the polling interval in seconds (default: 120).
@@ -77,16 +86,6 @@ You can also configure the application using environment variables:
 2. **Session Borrowing** – Extracts the required connection parameters (ports, CSRF tokens) from the running process arguments.
 3. **Local Communication** – Communicates directly with the local language server to retrieve model quotas and plan status.
 4. **TUI Rendering** – Uses React/Ink to render a clean, interactive dashboard in your terminal.
-
-## Development
-
-```bash
-# Watch mode (automatically rebuilds on change)
-npm run dev
-
-# Lint
-npm run lint
-```
 
 ## Disclaimer
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import React, {useState, useEffect} from 'react';
 import {render, Text, Box, useInput, useApp} from 'ink';
 import {ProcessFinder} from './core/process_finder.js';

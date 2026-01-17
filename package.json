@@ -1,0 +1,42 @@
+{
+  "name": "ag-quota",
+  "displayName": "Antigravity Quota (AGQ)",
+  "description": "Standalone TUI application to monitor Antigravity model usage",
+  "version": "2.0.0",
+  "type": "module",
+  "bin": {
+    "agq": "./export/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p ./",
+    "start": "npm run build && node ./export/index.js",
+    "dev": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "commander": "^11.1.0",
+    "ink": "^4.4.1",
+    "react": "^18.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Henrik-3/AntigravityQuota.git"
+  },
+  "keywords": [
+    "antigravity",
+    "quota",
+    "ai",
+    "tui",
+    "cli"
+  ],
+  "author": "Henrik Mertens",
+  "license": "MIT"
+}

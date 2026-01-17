@@ -1,0 +1,62 @@
+--- AGQ Session Started at 2026-01-17T10:09:03.725Z ---
+2026-01-17T10:09:03.725Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:09:03.725Z DEBUG [AGQ][ProcessFinder] Starting process detection (max_retries: 5)
+2026-01-17T10:09:03.725Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:09:03.725Z DEBUG [AGQ][PERF] Timer started: detect_process_info
+2026-01-17T10:09:03.725Z DEBUG [AGQ][ProcessFinder] Attempt 1/5
+2026-01-17T10:09:03.725Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:09:03.728Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
+2026-01-17T10:09:03.728Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
+2026-01-17T10:09:03.767Z ERROR [AGQ][ProcessFinder] Attempt 1 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:09:03.767Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:09:03.869Z DEBUG [AGQ][ProcessFinder] Attempt 2/5
+2026-01-17T10:09:03.869Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:09:03.917Z ERROR [AGQ][ProcessFinder] Attempt 2 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:09:03.917Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:09:04.019Z DEBUG [AGQ][ProcessFinder] Attempt 3/5
+2026-01-17T10:09:04.019Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:09:04.067Z ERROR [AGQ][ProcessFinder] Attempt 3 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:09:04.068Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:09:04.169Z DEBUG [AGQ][ProcessFinder] Attempt 4/5
+2026-01-17T10:09:04.169Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:09:04.223Z ERROR [AGQ][ProcessFinder] Attempt 4 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:09:04.223Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:09:04.325Z DEBUG [AGQ][ProcessFinder] Attempt 5/5
+2026-01-17T10:09:04.325Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:09:04.379Z ERROR [AGQ][ProcessFinder] Attempt 5 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:09:04.380Z ERROR [AGQ][ProcessFinder] Process detection failed after 5 attempt(s)
+2026-01-17T10:09:04.380Z DEBUG [AGQ][PERF] Timer ended: detect_process_info (655ms)
+2026-01-17T10:09:04.380Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
+2026-01-17T10:09:04.380Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
+2026-01-17T10:09:04.384Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
+2026-01-17T10:09:04.384Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm

@@ -16,6 +16,11 @@ program
 
 const options = program.opts();
 
+// Instantiate services outside the component to persist them across re-renders
+const configManager = new ConfigManager();
+const processFinder = new ProcessFinder();
+const quotaManager = new QuotaManager();
+
 const App = () => {
   const {exit} = useApp();
   const [snapshot, setSnapshot] = useState<quota_snapshot | null>(null);
@@ -23,38 +28,37 @@ const App = () => {
   const [error, setError] = useState<string | null>(null);
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
 
-  const configManager = new ConfigManager();
-  const processFinder = new ProcessFinder();
-  const quotaManager = new QuotaManager();
+  const start = async () => {
+    setError(null);
+    setStatus('Searching for Antigravity process...');
+    const info = await processFinder.detect_process_info(3);
+    
+    if (!info) {
+      setError('Could not find Antigravity process. Is the IDE running?');
+      setStatus('Waiting');
+      return;
+    }
+
+    setStatus('Connected');
+    quotaManager.init(info.connect_port, info.csrf_token);
+    
+    quotaManager.on_update((s) => {
+      setSnapshot(s);
+      setLastUpdate(new Date());
+      setStatus('Connected');
+    });
+
+    quotaManager.on_error((e) => {
+      logger.error('App', `Quota fetch error: ${e.message}`);
+      setError(`Fetch Error: ${e.message}`);
+    });
+
+    const interval = parseInt(options.interval, 10) * 1000;
+    quotaManager.start_polling(interval);
+  };
 
   useEffect(() => {
     logger.init();
-    const start = async () => {
-      setStatus('Searching for Antigravity process...');
-      const info = await processFinder.detect_process_info(5);
-      
-      if (!info) {
-        setError('Could not find Antigravity process. Is it running?');
-        setStatus('Failed');
-        return;
-      }
-
-      setStatus('Connected');
-      quotaManager.init(info.connect_port, info.csrf_token);
-      
-      quotaManager.on_update((s) => {
-        setSnapshot(s);
-        setLastUpdate(new Date());
-      });
-
-      quotaManager.on_error((e) => {
-        logger.error('App', `Quota fetch error: ${e.message}`);
-      });
-
-      const interval = parseInt(options.interval, 10) * 1000;
-      quotaManager.start_polling(interval);
-    };
-
     start();
 
     return () => {
@@ -67,8 +71,13 @@ const App = () => {
       exit();
     }
     if (input === 'r') {
+      setError(null);
       setStatus('Refreshing...');
-      quotaManager.fetch_quota().then(() => setStatus('Connected'));
+      if (quotaManager.is_initialized()) {
+        quotaManager.fetch_quota().then(() => setStatus('Connected'));
+      } else {
+        start();
+      }
     }
   });
 
@@ -99,8 +108,9 @@ const App = () => {
       </Box>
 
       {error && (
-        <Box marginBottom={1}>
-          <Text color="red">Error: {error}</Text>
+        <Box marginBottom={1} borderStyle="single" borderColor="red" paddingX={1} flexDirection="column">
+          <Text color="red">Status: {error}</Text>
+          <Text color="gray">Make sure Antigravity is open and try refreshing [r]</Text>
         </Box>
       )}
 
@@ -137,7 +147,7 @@ const App = () => {
 
       <Box marginTop={1} borderStyle="single" borderTop={true} borderBottom={false} borderLeft={false} borderRight={false} paddingTop={1}>
         <Text color="gray">
-          [r] Refresh | [q] Quit | Last updated: {lastUpdate ? lastUpdate.toLocaleTimeString() : 'Never'}
+          [r] Refresh/Reconnect | [q] Quit | Last updated: {lastUpdate ? lastUpdate.toLocaleTimeString() : 'Never'}
         </Text>
       </Box>
     </Box>

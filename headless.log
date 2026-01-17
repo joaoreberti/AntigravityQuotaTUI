@@ -1,0 +1,19 @@
+2026/01/17 11:40:51 maxprocs: Leaving GOMAXPROCS=12: CPU quota undefined
+I0117 11:40:51.618073 69301 server.go:1172] Starting language server process with pid 69301
+I0117 11:40:51.618607 69301 server.go:286] Setting GOMAXPROCS to 4
+E0117 11:40:51.621002 69301 log.go:354] Failed to read initial metadata from stdin: %!s(<nil>)
+F0117 11:40:51.621613 69301 main.go:119] Language server failed - Failed to read initial metadata from stdin: %!s(<nil>)
+(1) attached stack trace
+  -- stack trace:
+  | google3/third_party/jetski/language_server/language_server.setUpMetadataProvider
+  | 	third_party/jetski/language_server/server.go:348
+  | google3/third_party/jetski/language_server/language_server.CreateLanguageServerAndServe
+  | 	third_party/jetski/language_server/server.go:1205
+  | main.main
+  | 	third_party/jetski/cmd/language_server/main.go:117
+  | runtime.main
+  | 	third_party/go/gc/src/runtime/proc.go:290
+  | runtime.goexit
+  | 	third_party/go/gc/src/runtime/asm_arm64.s:1447
+Wraps: (2) Failed to read initial metadata from stdin: %!s(<nil>)
+Error types: (1) *withstack.withStack (2) *errors.errorString

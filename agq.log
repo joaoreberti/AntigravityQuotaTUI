@@ -1,44 +1,198 @@
---- AGQ Session Started at 2026-01-17T10:19:37.580Z ---
-2026-01-17T10:19:37.581Z DEBUG [AGQ][ProcessFinder] ============================================================
-2026-01-17T10:19:37.581Z DEBUG [AGQ][ProcessFinder] Starting process detection (max_retries: 5)
-2026-01-17T10:19:37.581Z DEBUG [AGQ][ProcessFinder] ============================================================
-2026-01-17T10:19:37.581Z DEBUG [AGQ][PERF] Timer started: detect_process_info
-2026-01-17T10:19:37.581Z DEBUG [AGQ][ProcessFinder] Attempt 1/5
-2026-01-17T10:19:37.581Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+--- AGQ Session Started at 2026-01-17T10:43:43.928Z ---
+2026-01-17T10:43:43.929Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:43:43.929Z DEBUG [AGQ][ProcessFinder] Starting process detection (max_retries: 3)
+2026-01-17T10:43:43.929Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:43:43.929Z DEBUG [AGQ][PERF] Timer started: detect_process_info
+2026-01-17T10:43:43.929Z DEBUG [AGQ][ProcessFinder] Attempt 1/3
+2026-01-17T10:43:43.929Z DEBUG [AGQ][ProcessFinder] Executing process list command:
 pgrep -fl language_server_macos_arm
-2026-01-17T10:19:37.583Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
-2026-01-17T10:19:37.583Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
-2026-01-17T10:19:37.626Z DEBUG [AGQ][ProcessFinder] Raw stdout (1375 chars):
-49973 /Applications/Antigravity.app/Contents/Resources/app/extensions/antigravity/bin/language_server_macos_arm --enable_lsp --extension_server_port 58705 --csrf_token 47d59bb8-b6ca-4596-9e4a-b2bd212efa29 --random_port --workspace_id file_Users_joao_code_pocketing --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /var/folders/b6/b7k3q8054z73gf7r85w6fjqc0000gn/T/server_536b5dd26349cd88
-49992 /Applications/Antigravity.app/Contents/Resources/app/extensions/antigravity/bin/language_server_macos_arm --enable_lsp --extension_server_port 58709 --csrf_token f719b59b-7535-4168-b786-9e579a3905a6 --random_port --workspace_id file_Users_joao_ai_ai_assistant_personal_assistant_mcp --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /var/folders/b6/b7k3q8054z73gf7r85w6fjqc0000gn/T/server_07fde1fedb15efa8
-50161 /Applications/Antigravity.app/Contents/Resources/app/extensions/antigravity/bin/language_server_macos_arm --enable_lsp --extension_server_port 58723 --csrf_token f0168eb6-10f8-4f9d-8ce4-207aa342f75e --random_port --workspace_id file_Users_joao_code_the_wishing_list --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /var/folders/b6/b7k3q8054z73gf7r85w6fjqc0000gn/T/server_44cb9ff65c527dcc
-
-2026-01-17T10:19:37.627Z INFO  [AGQ][ProcessFinder] Process info parsed successfully: {
-  "pid": 49973,
-  "extension_port": 58705,
-  "csrf_token": "47d59bb8..."
+2026-01-17T10:43:43.969Z ERROR [AGQ][ProcessFinder] Attempt 1 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
 }
-2026-01-17T10:19:37.627Z DEBUG [AGQ][ProcessFinder] Getting listening ports for PID: 49973
-2026-01-17T10:19:37.627Z DEBUG [AGQ][ProcessFinder] Port list command:
-lsof -nP -a -iTCP -sTCP:LISTEN -p 49973
-2026-01-17T10:19:37.654Z DEBUG [AGQ][ProcessFinder] Port list stdout (344 chars):
-COMMAND     PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
-language_ 49973 joao   23u  IPv4 0xe6ed56adc2c85102      0t0  TCP 127.0.0.1:58716 (LISTEN)
-language_ 49973 joao   24u  IPv4  0x1ff6bdcfd6a2bf8      0t0  TCP 127.0.0.1:58718 (LISTEN)
-language_ 49973 joao   41u  IPv4 0xbebd8c2ff1dfbd56      0t0  TCP 127.0.0.1:58735 (LISTEN)
+2026-01-17T10:43:43.970Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:43:44.071Z DEBUG [AGQ][ProcessFinder] Attempt 2/3
+2026-01-17T10:43:44.071Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:44.120Z ERROR [AGQ][ProcessFinder] Attempt 2 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:43:44.121Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:43:44.222Z DEBUG [AGQ][ProcessFinder] Attempt 3/3
+2026-01-17T10:43:44.223Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:44.277Z ERROR [AGQ][ProcessFinder] Attempt 3 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:43:44.277Z ERROR [AGQ][ProcessFinder] Process detection failed after 3 attempt(s)
+2026-01-17T10:43:44.278Z DEBUG [AGQ][PERF] Timer ended: detect_process_info (349ms)
+2026-01-17T10:43:46.079Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:43:46.079Z DEBUG [AGQ][ProcessFinder] Starting process detection (max_retries: 3)
+2026-01-17T10:43:46.080Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:43:46.080Z DEBUG [AGQ][PERF] Timer started: detect_process_info
+2026-01-17T10:43:46.080Z DEBUG [AGQ][ProcessFinder] Attempt 1/3
+2026-01-17T10:43:46.080Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:46.146Z ERROR [AGQ][ProcessFinder] Attempt 1 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:43:46.146Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:43:46.247Z DEBUG [AGQ][ProcessFinder] Attempt 2/3
+2026-01-17T10:43:46.247Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:46.295Z ERROR [AGQ][ProcessFinder] Attempt 2 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:43:46.295Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:43:46.396Z DEBUG [AGQ][ProcessFinder] Attempt 3/3
+2026-01-17T10:43:46.397Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:46.450Z ERROR [AGQ][ProcessFinder] Attempt 3 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:43:46.451Z ERROR [AGQ][ProcessFinder] Process detection failed after 3 attempt(s)
+2026-01-17T10:43:46.451Z DEBUG [AGQ][PERF] Timer ended: detect_process_info (371ms)
+2026-01-17T10:43:52.367Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:43:52.368Z DEBUG [AGQ][ProcessFinder] Starting process detection (max_retries: 3)
+2026-01-17T10:43:52.368Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:43:52.368Z DEBUG [AGQ][PERF] Timer started: detect_process_info
+2026-01-17T10:43:52.368Z DEBUG [AGQ][ProcessFinder] Attempt 1/3
+2026-01-17T10:43:52.368Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:52.464Z ERROR [AGQ][ProcessFinder] Attempt 1 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:43:52.464Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:43:52.565Z DEBUG [AGQ][ProcessFinder] Attempt 2/3
+2026-01-17T10:43:52.565Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:52.659Z ERROR [AGQ][ProcessFinder] Attempt 2 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:43:52.659Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:43:52.760Z DEBUG [AGQ][ProcessFinder] Attempt 3/3
+2026-01-17T10:43:52.760Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:52.816Z ERROR [AGQ][ProcessFinder] Attempt 3 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:43:52.816Z ERROR [AGQ][ProcessFinder] Process detection failed after 3 attempt(s)
+2026-01-17T10:43:52.816Z DEBUG [AGQ][PERF] Timer ended: detect_process_info (448ms)
+2026-01-17T10:43:53.382Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:43:53.383Z DEBUG [AGQ][ProcessFinder] Starting process detection (max_retries: 3)
+2026-01-17T10:43:53.383Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:43:53.383Z DEBUG [AGQ][PERF] Timer started: detect_process_info
+2026-01-17T10:43:53.383Z DEBUG [AGQ][ProcessFinder] Attempt 1/3
+2026-01-17T10:43:53.383Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:53.469Z ERROR [AGQ][ProcessFinder] Attempt 1 failed with error: {
+  "message": "Command failed: pgrep -fl language_server_macos_arm\n",
+  "code": 1,
+  "killed": false,
+  "signal": null
+}
+2026-01-17T10:43:53.470Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:43:53.571Z DEBUG [AGQ][ProcessFinder] Attempt 2/3
+2026-01-17T10:43:53.571Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:53.646Z DEBUG [AGQ][ProcessFinder] Raw stdout (472 chars):
+72458 /Applications/Antigravity.app/Contents/Resources/app/extensions/antigravity/bin/language_server_macos_arm --enable_lsp --extension_server_port 50108 --csrf_token db7ebded-7ca2-4d20-81e3-c7b15335e7e1 --random_port --workspace_id file_Users_joao_ai_ai_assistant_personal_assistant_mcp --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /var/folders/b6/b7k3q8054z73gf7r85w6fjqc0000gn/T/server_49bf4a5b57a4732e
 
-2026-01-17T10:19:37.655Z DEBUG [AGQ][ProcessFinder] Parsed ports: [58716, 58718, 58735]
-2026-01-17T10:19:37.655Z DEBUG [AGQ][ProcessFinder] Found 3 listening port(s): [58716, 58718, 58735]
-2026-01-17T10:19:37.655Z DEBUG [AGQ][ProcessFinder] Testing ports to find working endpoint...
-2026-01-17T10:19:37.655Z DEBUG [AGQ][ProcessFinder] Testing port 58716...
-2026-01-17T10:19:37.655Z DEBUG [AGQ][ProcessFinder] HTTP request to https://127.0.0.1:58716/exa.language_server_pb.LanguageServerService/GetUnleashData
-2026-01-17T10:19:37.676Z DEBUG [AGQ][ProcessFinder] Response from port 58716: status=200
-2026-01-17T10:19:37.676Z INFO  [AGQ][ProcessFinder] Port 58716 is working
-2026-01-17T10:19:37.676Z INFO  [AGQ][ProcessFinder] SUCCESS: Valid port found: 58716
-2026-01-17T10:19:37.676Z DEBUG [AGQ][PERF] Timer ended: detect_process_info (95ms)
-2026-01-17T10:19:37.677Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
-2026-01-17T10:19:37.677Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
-2026-01-17T10:19:37.707Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
-2026-01-17T10:19:37.707Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
-2026-01-17T10:19:37.714Z DEBUG [AGQ][ProcessFinder] Initializing ProcessFinder for platform: darwin, arch: arm64
-2026-01-17T10:19:37.714Z INFO  [AGQ][ProcessFinder] Target process name: language_server_macos_arm
+2026-01-17T10:43:53.647Z INFO  [AGQ][ProcessFinder] Process info parsed successfully: {
+  "pid": 72458,
+  "extension_port": 50108,
+  "csrf_token": "db7ebded..."
+}
+2026-01-17T10:43:53.647Z DEBUG [AGQ][ProcessFinder] Getting listening ports for PID: 72458
+2026-01-17T10:43:53.647Z DEBUG [AGQ][ProcessFinder] Port list command:
+lsof -nP -a -iTCP -sTCP:LISTEN -p 72458
+2026-01-17T10:43:53.668Z ERROR [AGQ][ProcessFinder] Failed to get listening ports: {
+  "message": "Command failed: lsof -nP -a -iTCP -sTCP:LISTEN -p 72458\n",
+  "code": 1
+}
+2026-01-17T10:43:53.668Z DEBUG [AGQ][ProcessFinder] Found 0 listening port(s): []
+2026-01-17T10:43:53.668Z WARN  [AGQ][ProcessFinder] No listening ports found for PID 72458
+2026-01-17T10:43:53.668Z DEBUG [AGQ][ProcessFinder] Waiting 100ms before retry...
+2026-01-17T10:43:53.769Z DEBUG [AGQ][ProcessFinder] Attempt 3/3
+2026-01-17T10:43:53.769Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:53.827Z DEBUG [AGQ][ProcessFinder] Raw stdout (472 chars):
+72458 /Applications/Antigravity.app/Contents/Resources/app/extensions/antigravity/bin/language_server_macos_arm --enable_lsp --extension_server_port 50108 --csrf_token db7ebded-7ca2-4d20-81e3-c7b15335e7e1 --random_port --workspace_id file_Users_joao_ai_ai_assistant_personal_assistant_mcp --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /var/folders/b6/b7k3q8054z73gf7r85w6fjqc0000gn/T/server_49bf4a5b57a4732e
+
+2026-01-17T10:43:53.827Z INFO  [AGQ][ProcessFinder] Process info parsed successfully: {
+  "pid": 72458,
+  "extension_port": 50108,
+  "csrf_token": "db7ebded..."
+}
+2026-01-17T10:43:53.827Z DEBUG [AGQ][ProcessFinder] Getting listening ports for PID: 72458
+2026-01-17T10:43:53.827Z DEBUG [AGQ][ProcessFinder] Port list command:
+lsof -nP -a -iTCP -sTCP:LISTEN -p 72458
+2026-01-17T10:43:53.842Z ERROR [AGQ][ProcessFinder] Failed to get listening ports: {
+  "message": "Command failed: lsof -nP -a -iTCP -sTCP:LISTEN -p 72458\n",
+  "code": 1
+}
+2026-01-17T10:43:53.842Z DEBUG [AGQ][ProcessFinder] Found 0 listening port(s): []
+2026-01-17T10:43:53.842Z WARN  [AGQ][ProcessFinder] No listening ports found for PID 72458
+2026-01-17T10:43:53.842Z ERROR [AGQ][ProcessFinder] Process detection failed after 3 attempt(s)
+2026-01-17T10:43:53.842Z DEBUG [AGQ][PERF] Timer ended: detect_process_info (459ms)
+2026-01-17T10:43:54.323Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:43:54.323Z DEBUG [AGQ][ProcessFinder] Starting process detection (max_retries: 3)
+2026-01-17T10:43:54.323Z DEBUG [AGQ][ProcessFinder] ============================================================
+2026-01-17T10:43:54.323Z DEBUG [AGQ][PERF] Timer started: detect_process_info
+2026-01-17T10:43:54.323Z DEBUG [AGQ][ProcessFinder] Attempt 1/3
+2026-01-17T10:43:54.323Z DEBUG [AGQ][ProcessFinder] Executing process list command:
+pgrep -fl language_server_macos_arm
+2026-01-17T10:43:54.462Z DEBUG [AGQ][ProcessFinder] Raw stdout (472 chars):
+72458 /Applications/Antigravity.app/Contents/Resources/app/extensions/antigravity/bin/language_server_macos_arm --enable_lsp --extension_server_port 50108 --csrf_token db7ebded-7ca2-4d20-81e3-c7b15335e7e1 --random_port --workspace_id file_Users_joao_ai_ai_assistant_personal_assistant_mcp --cloud_code_endpoint https://daily-cloudcode-pa.googleapis.com --app_data_dir antigravity --parent_pipe_path /var/folders/b6/b7k3q8054z73gf7r85w6fjqc0000gn/T/server_49bf4a5b57a4732e
+
+2026-01-17T10:43:54.462Z INFO  [AGQ][ProcessFinder] Process info parsed successfully: {
+  "pid": 72458,
+  "extension_port": 50108,
+  "csrf_token": "db7ebded..."
+}
+2026-01-17T10:43:54.463Z DEBUG [AGQ][ProcessFinder] Getting listening ports for PID: 72458
+2026-01-17T10:43:54.464Z DEBUG [AGQ][ProcessFinder] Port list command:
+lsof -nP -a -iTCP -sTCP:LISTEN -p 72458
+2026-01-17T10:43:54.547Z DEBUG [AGQ][ProcessFinder] Port list stdout (344 chars):
+COMMAND     PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+language_ 72458 joao   23u  IPv4 0x4ef266c09a9cceaf      0t0  TCP 127.0.0.1:50116 (LISTEN)
+language_ 72458 joao   24u  IPv4 0x61381ae923a0852c      0t0  TCP 127.0.0.1:50117 (LISTEN)
+language_ 72458 joao   41u  IPv4 0x9c1ca623d8e70069      0t0  TCP 127.0.0.1:50124 (LISTEN)
+
+2026-01-17T10:43:54.548Z DEBUG [AGQ][ProcessFinder] Parsed ports: [50116, 50117, 50124]
+2026-01-17T10:43:54.549Z DEBUG [AGQ][ProcessFinder] Found 3 listening port(s): [50116, 50117, 50124]
+2026-01-17T10:43:54.549Z DEBUG [AGQ][ProcessFinder] Testing ports to find working endpoint...
+2026-01-17T10:43:54.549Z DEBUG [AGQ][ProcessFinder] Testing port 50116...
+2026-01-17T10:43:54.550Z DEBUG [AGQ][ProcessFinder] HTTP request to https://127.0.0.1:50116/exa.language_server_pb.LanguageServerService/GetUnleashData
+2026-01-17T10:43:54.627Z DEBUG [AGQ][ProcessFinder] Response from port 50116: status=200
+2026-01-17T10:43:54.629Z INFO  [AGQ][ProcessFinder] Port 50116 is working
+2026-01-17T10:43:54.630Z INFO  [AGQ][ProcessFinder] SUCCESS: Valid port found: 50116
+2026-01-17T10:43:54.630Z DEBUG [AGQ][PERF] Timer ended: detect_process_info (307ms)
+2026-01-17T10:44:08.895Z ERROR [AGQ][App] Quota fetch error: connect ECONNREFUSED 127.0.0.1:50116
+2026-01-17T10:44:09.558Z ERROR [AGQ][App] Quota fetch error: connect ECONNREFUSED 127.0.0.1:50116

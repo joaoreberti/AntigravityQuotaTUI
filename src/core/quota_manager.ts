@@ -20,6 +20,10 @@ export class QuotaManager {
 		this.csrf_token = csrf_token;
 	}
 
+	is_initialized(): boolean {
+		return this.port !== 0 && this.csrf_token !== '';
+	}
+
 	private request<T>(path: string, body: object): Promise<T> {
 		return new Promise((resolve, reject) => {
 			const data = JSON.stringify(body);

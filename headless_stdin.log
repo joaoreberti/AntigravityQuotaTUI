@@ -1,0 +1,19 @@
+2026/01/17 11:41:02 maxprocs: Leaving GOMAXPROCS=12: CPU quota undefined
+I0117 11:41:02.804990 69619 server.go:1172] Starting language server process with pid 69619
+I0117 11:41:02.805053 69619 server.go:286] Setting GOMAXPROCS to 4
+E0117 11:41:02.806731 69619 log.go:354] Failed to unmarshal initial Protobuf metadata from stdin: proto: cannot parse invalid wire-format data
+F0117 11:41:02.806900 69619 main.go:119] Language server failed - Failed to unmarshal initial Protobuf metadata from stdin: proto: cannot parse invalid wire-format data
+(1) attached stack trace
+  -- stack trace:
+  | google3/third_party/jetski/language_server/language_server.setUpMetadataProvider
+  | 	third_party/jetski/language_server/server.go:354
+  | google3/third_party/jetski/language_server/language_server.CreateLanguageServerAndServe
+  | 	third_party/jetski/language_server/server.go:1205
+  | main.main
+  | 	third_party/jetski/cmd/language_server/main.go:117
+  | runtime.main
+  | 	third_party/go/gc/src/runtime/proc.go:290
+  | runtime.goexit
+  | 	third_party/go/gc/src/runtime/asm_arm64.s:1447
+Wraps: (2) Failed to unmarshal initial Protobuf metadata from stdin: proto: cannot parse invalid wire-format data
+Error types: (1) *withstack.withStack (2) *errors.errorString
